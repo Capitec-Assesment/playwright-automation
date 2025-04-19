@@ -28,10 +28,10 @@ cd playwright-automation
 ## 3. Run the Tests Locally
 To run the Playwright tests locally, execute the following command:
 ```sh
-npx playwright test
-npx playwright test:report
-npx playwright test:headed
-npx playwright test:ui
+npx run test
+npx run test:headed
+npx run test:ui
+npx run mcr 
 ```
 ## Test Framework
 ### Test Targets
