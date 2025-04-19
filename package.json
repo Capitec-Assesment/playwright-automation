@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:report": "npx playwright show-report",
     "test:headed": "npx playwright test --headed",
-    "test:ui": "npx playwright test --ui"
+    "test:ui": "npx playwright test --ui",
+    "mcr": "npx monocart show-report monocart-report/index.html"
   },
   "keywords": [],
   "author": "",
