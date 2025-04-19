@@ -13,10 +13,13 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
@@ -25,3 +28,12 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+    - name: Generate Monocart report
+      run: npx monocart show-report monocart-report/index.html
+  
+    - name: Upload Monocart report as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: monocart-report
+        path: monocart-report/index.html
