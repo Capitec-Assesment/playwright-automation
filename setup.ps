@@ -1,0 +1,47 @@
+# Configuration
+$repoUrl = "https://github.com/Capitec-Assesment/playwright-automation.git"
+$targetDir = "C:\automation"  # <-- Change to your preferred location
+$repoName = "playwright-automation"
+$repoPath = Join-Path $targetDir $repoName
+
+# Create target directory if it doesn't exist
+if (-Not (Test-Path -Path $targetDir)) {
+    Write-Host "Creating target directory: $targetDir"
+    New-Item -Path $targetDir -ItemType Directory | Out-Null
+}
+
+# Navigate to the target directory
+Set-Location -Path $targetDir
+
+# Clone the repository if it doesn't exist
+if (-Not (Test-Path -Path $repoPath)) {
+    Write-Host "Cloning repository from $repoUrl..."
+    git clone $repoUrl
+} else {
+    Write-Host "Repository already exists at $repoPath"
+}
+
+# Navigate into the repo
+Set-Location -Path $repoPath
+
+# Install dependencies
+Write-Host "`nInstalling npm dependencies..."
+npm install
+
+# Install Playwright browsers
+Write-Host "`nInstalling Playwright browsers..."
+npx playwright install --with-deps
+
+# Run Playwright tests
+Write-Host "`nRunning Playwright tests..."
+npx playwright test
+
+# Optional: Show Monocart report (if configured)
+if (Test-Path ".\monocart-report\index.html") {
+    Write-Host "`nOpening Monocart report..."
+    npx monocart show-report monocart-report/index.html
+} else {
+    Write-Host "`nMonocart report not found. Make sure Monocart is configured in your playwright.config.ts"
+}
+
+Write-Host "`nPlaywright tests completed."
