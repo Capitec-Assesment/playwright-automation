@@ -6,9 +6,10 @@ The tests are designed to validate the functionality of various web applications
 To run the tests locally or on a CI/CD pipeline, ensure the following tools are installed:
 - Node.js (LTS version)
 - Playwright
+- Monocart report
 
 ## Getting Started
-Follow the steps below:
+Follow the steps below: 👇👇 Or Download and run [setup.ps](https://github.com/Capitec-Assesment/playwright-automation/blob/main/setup.ps)
 ### 1. Clone the Repository
 Clone this repository to your local machine using the following command:
 ```sh
